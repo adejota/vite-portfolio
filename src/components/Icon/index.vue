@@ -13,6 +13,12 @@ import Twitter from './Twitter.vue'
 import GitHub from './GitHub.vue'
 import ChevronDown from './ChevronDown.vue'
 import ChevronUp from './ChevronUp.vue'
+import Briefcase from './Briefcase.vue'
+import LightBulb from './LightBulb.vue'
+import AcademicCap from './AcademicCap.vue'
+import CodeBracketSquare from './CodeBracketSquare.vue'
+import PencilSquare from './PencilSquare.vue'
+
 
 export default {
   components: {
@@ -25,7 +31,12 @@ export default {
     Twitter,
     GitHub,
     ChevronDown,
-    ChevronUp
+    ChevronUp,
+    Briefcase,
+    LightBulb,
+    AcademicCap,
+    CodeBracketSquare,
+    PencilSquare,
   },
 
   props: {

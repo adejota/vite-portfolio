@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="h-screen w-screen p-4 flex items-start justify-center bg-full-black">
+  <div id="app" class="min-h-screen h-full min-w-screen w-full bg-full-black">
     <router-view></router-view>
   </div>
 </template>
@@ -29,17 +29,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

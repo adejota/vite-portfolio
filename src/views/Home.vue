@@ -1,104 +1,149 @@
 <template>
-<div class="w-full flex flex-col">
-  <header class="w-full px-4 pt-4 mb-4 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden relative">
-    <div class="flex pb-4">
-      <figure>
-        <img src="../assets/images/perfil.jpg" alt="Profile picture"
-          class="rounded-3xl mr-4"
-          width="80"
-        >
-      </figure>
+  <div class="flex flex-col p-4">
+    <header class="w-full px-4 pt-4 mb-4 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden relative">
+      <div class="flex pb-4">
+        <figure>
+          <img src="../assets/images/perfil.jpg" alt="Profile picture"
+            class="rounded-3xl mr-4"
+            width="80"
+          >
+        </figure>
 
-      <div>
-        <h1 class="text-2xl text-full-white font-bold mb-2">Ademir Jr.</h1>
-        <div class="text-sm text-full-white py-1 px-2 bg-low-black rounded-xl">
-          <span>Web Developer</span>
+        <div>
+          <h1 class="text-2xl text-full-white font-bold mb-2">Ademir Jr.</h1>
+          <div class="text-sm text-full-white py-1 px-2 bg-low-black rounded-xl">
+            <span>Web Developer</span>
+          </div>
         </div>
+
+        <button @click="setShowHeaderListItem"
+          class="absolute top-0 right-0 p-2"
+        >
+          <icon
+            :name="setChevronIcon"
+            :class="'w-6 h-6 text-primary'"
+          />
+        </button>
       </div>
 
-      <button @click="setShowHeaderListItem"
-        class="absolute top-0 right-0 p-2"
+      <div v-if="showHeaderListItem"
+        class="animate__animated animate__fadeIn"
       >
-        <icon
-          :name="setChevronIcon"
-          :class="'w-6 h-6 text-primary'"
-        />
-      </button>
-    </div>
+        <div class="flex pt-4 border-b border-t border-extra-low-white">
+          <ul>
+            <li v-for="headerListItem in headerListItems" :key="headerListItem.title"
+              class="flex mb-4"
+            >
+              <div class="w-8 h-8 mr-2 flex justify-center items-center shadow-full-black shadow rounded-lg">
+                <icon
+                  :name="headerListItem.icon"
+                  :class="'w-4 h-4 text-primary'"
+                />
+              </div>
 
-    <div v-if="showHeaderListItem"
-      class="animate__animated animate__fadeIn"
-    >
-      <div class="flex pt-4 border-b border-t border-extra-low-white">
-        <ul>
-          <li v-for="headerListItem in headerListItems" :key="headerListItem.title"
-            class="flex mb-4"
+              <div>
+                <p class="text-xs text-mid-white uppercase">{{ headerListItem.title }}</p>
+                <p class="text-sm text-full-white font-bold">{{ headerListItem.content }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <ul class="flex pb-4">
+          <li v-for="headerNavListItem in headerNavListItems" :key="headerNavListItem.title"
+            class="pt-4 mr-2"        
           >
-            <div class="w-8 h-8 mr-2 flex justify-center items-center shadow-full-black shadow rounded-lg">
+            <a :href="headerNavListItem.link" target="_blank">
               <icon
-                :name="headerListItem.icon"
-                :class="'w-4 h-4 text-primary'"
+                :name="headerNavListItem.icon"
+                :class="'w-5 h-5 text-mid-white'"
               />
-            </div>
-
-            <div>
-              <p class="text-xs text-mid-white uppercase">{{ headerListItem.title }}</p>
-              <p class="text-sm text-full-white font-bold">{{ headerListItem.content }}</p>
-            </div>
+            </a>
           </li>
         </ul>
       </div>
+    </header>
 
-      <ul class="flex pb-4">
-        <li v-for="headerNavListItem in headerNavListItems" :key="headerNavListItem.title"
-          class="pt-4 mr-2"        
+    <section v-if="selectedNavBarItem === 1"
+      class="w-full p-4 mb-14 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
+    >
+      <h2 class="text-2xl text-full-white font-bold">About Me</h2>
+      <div class="mt-2 mb-4 w-12 border-2 rounded-xl border-primary bg-primary"></div>
+      <p class="text-mid-white mb-2">Sou graduado em contabilidade desde 2018 e trabalho na área de tecnologia desde 2020.</p>
+      <p class="text-mid-white mb-2">Realizei um curso técnico de multimídia integrado ao ensino médio onde aprimorei o meu lado criativo e adquiri habilidades de UX e UI.</p>
+      <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
+      <p class="text-mid-white">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
+
+      <div class="grid grid-cols-2 gap-4 mt-4 mb-8">
+        <div v-for="aboutListItem in aboutListItems" :key="aboutListItem.title"
+          class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
         >
-          <a :href="headerNavListItem.link" target="_blank">
-            <icon
-              :name="headerNavListItem.icon"
-              :class="'w-5 h-5 text-mid-white'"
-            />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </header>
+          <icon
+            :name="aboutListItem.icon"
+            :class="'w-8 h-8 text-primary mb-2'"
+          />
+          <h4 class="text-2xl text-full-white font-bold">{{ aboutListItem.title }}</h4>
+          <p class="text-sm text-mid-white text-center mt-1">{{ aboutListItem.content }}</p>
+        </div>
+      </div>
 
-  <section v-if="selectedNavBarItem === 1"
-    class="w-full p-4 mb-4 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
-  >
-    <h2 class="text-2xl text-full-white font-bold">About Me</h2>
-    <div class="mt-2 mb-4 w-12 border-2 rounded-xl border-primary"></div>
-    <p class="text-mid-white mb-2">Sou graduado em contabilidade desde 2018 e trabalho na área de tecnologia desde 2020.</p>
-    <p class="text-mid-white mb-2">Realizei um curso técnico de multimídia integrado ao ensino médio onde aprimorei o meu lado criativo e adquiri habilidades de UX e UI.</p>
-    <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
-    <p class="text-mid-white">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
-  </section>
+      <h3 class="text-lg text-full-white font-bold">What I'm Doing</h3>
 
-  <section v-if="selectedNavBarItem === 2"
-    class="w-full p-4 mb-4 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
-  >
-    <h2 class="text-2xl text-full-white font-bold">Resume</h2>
-  </section>
+      <div class="grid grid-cols-1 gap-4 mt-4 mb-8">
+        <div v-for="doingListItem in doingListItems" :key="doingListItem.title"
+          class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
+        >
+          <icon
+            :name="doingListItem.icon"
+            :class="'w-8 h-8 text-primary mb-2'"
+          />
+          <h4 class="text-full-white font-bold">{{ doingListItem.title }}</h4>
+          <p class="text-sm text-mid-white text-center mt-1">{{ doingListItem.content }}</p>
+        </div>
+      </div>
+    </section>
 
-  <section v-if="selectedNavBarItem === 3"
-    class="w-full p-4 mb-4 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
-  >
-    <h2 class="text-2xl text-full-white font-bold">Portfolio</h2>
-  </section>
+    <section v-if="selectedNavBarItem === 2"
+      class="w-full p-4 mb-14 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
+    >
+      <h2 class="text-2xl text-full-white font-bold">Resume</h2>
+      <div class="mt-2 mb-4 w-12 border-2 rounded-xl border-primary bg-primary"></div>
+    </section>
 
-  <nav class="absolute bottom-0 left-0 right-0 p-4 bg-mid-black rounded-t-xl overflow-hidden">
+    <section v-if="selectedNavBarItem === 3"
+      class="w-full p-4 mb-14 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
+    >
+      <h2 class="text-2xl text-full-white font-bold">Portfolio</h2>
+      <div class="mt-2 mb-4 w-12 border-2 rounded-xl border-primary bg-primary"></div>
+
+      <div v-for="portfolioListItem in portfolioListItems" :key="portfolioListItem.name"
+        class="animate__animated animate__zoomIn animate__faster"
+      >
+        <a :href="portfolioListItem.link" target="_blank">
+          <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
+            class="rounded-xl"
+          >
+          <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
+          <p class="text-sm text-mid-white mb-8">{{ portfolioListItem.content }}</p>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <nav class="fixed bottom-0 left-0 right-0 p-4 bg-mid-black rounded-t-xl overflow-hidden">
     <ul class="flex justify-evenly">
       <li v-for="navBarItem in navBarItems" :key="navBarItem.title"
-        class="text-full-white"
+        class="text-full-white transition-colors"
+        :class="{'font-bold text-primary': selectedNavBarItem === navBarItem.id}"
       >
-        <button @click="selectedNavBarItem = navBarItem.id">
+        <button @click="selectedNavBarItem = navBarItem.id"
+          class="focus:outline-none"
+        >
           {{ navBarItem.title }}
         </button>
       </li>
     </ul>
   </nav>
-</div>
 </template>
 
 <script>
@@ -122,7 +167,7 @@ export default {
       headerListItems: [
         { title: 'email', content: 'ademir.diamentejunior@gmail.com', icon: 'Mail' },
         { title: 'phone', content: '+5511983506490', icon: 'DevicePhoneMobile' },
-        { title: 'location', content: 'São Paulo, Brazil', icon: 'Location'},
+        { title: 'location', content: 'São Paulo, Brazil', icon: 'Location' },
         { title: 'birth', content: '01/19/1994', icon: 'Cake' },
       ],
 
@@ -131,6 +176,22 @@ export default {
         { title: 'instagram', link: 'https://www.instagram.com/ade_jota/', icon: 'Instagram' },
         { title: 'twitter', link: 'https://twitter.com/AdemirDiamente', icon: 'Twitter' },
         { title: 'github', link: 'https://github.com/adejota', icon: 'GitHub' },
+      ],
+
+      aboutListItems: [
+        { title: '+2', content: 'Years of experience', icon: 'Briefcase' },
+        { title: '+10', content: 'Projects completed', icon: 'LightBulb' },
+        { title: '+10', content: 'Training & courses', icon: 'AcademicCap' },
+      ],
+
+      doingListItems: [
+        { title: 'Web Development', content: 'High-quality development of sites at the professional level', icon: 'CodeBracketSquare' },
+        { title: 'Web Design', content: 'The most modern and high-quality design made at a professional level', icon: 'PencilSquare' },
+      ],
+
+      portfolioListItems: [
+        { name: 'le-tip', title: 'Le/Tip', content: 'Web app description', link: 'https://adejota-le-tip.netlify.app/' },
+        { name: 'memory-game', title: 'Memory game', content: 'Web app description', link: 'https://adejota-memory-game.netlify.app/' }
       ],
 
       navBarItems: [
@@ -144,6 +205,10 @@ export default {
   methods: {
     setShowHeaderListItem() {
       this.showHeaderListItem = !this.showHeaderListItem
+    },
+
+    getImageUrl(name) {
+      return new URL(`../assets/images/${name}.png`, import.meta.url).href
     }
   }
 }
