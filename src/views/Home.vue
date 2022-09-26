@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col p-4">
-    <header class="w-full px-4 pt-4 mb-4 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden relative">
+  <div class="flex flex-col xl:flex-row xl:justify-between p-4 xl:p-16">
+    <header class="w-full xl:max-w-md xl:mr-8 xl:h-full px-4 pt-4 mb-4  bg-mid-black rounded-xl border border-extra-low-white overflow-hidden relative">
       <div class="flex pb-4">
         <figure>
           <img src="../assets/images/perfil.jpg" alt="Profile picture"
@@ -17,7 +17,7 @@
         </div>
 
         <button @click="setShowHeaderListItem"
-          class="absolute top-0 right-0 p-2"
+          class="absolute top-0 right-0 p-2 xl:hidden"
         >
           <icon
             :name="setChevronIcon"
@@ -26,7 +26,7 @@
         </button>
       </div>
 
-      <div v-if="showHeaderListItem"
+      <div v-if="showHeaderListItem || width >= 1440"
         class="animate__animated animate__fadeIn"
       >
         <div class="flex pt-4 border-b border-t border-extra-low-white">
@@ -34,7 +34,7 @@
             <li v-for="headerListItem in headerListItems" :key="headerListItem.title"
               class="flex mb-4"
             >
-              <div class="w-8 h-8 mr-2 flex justify-center items-center shadow-full-black shadow rounded-lg">
+              <div class="w-8 h-8 mr-2 flex justify-center items-center border border-extra-low-white shadow-full-black shadow rounded-lg">
                 <icon
                   :name="headerListItem.icon"
                   :class="'w-4 h-4 text-primary'"
@@ -74,7 +74,7 @@
       <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
       <p class="text-mid-white mb-6">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
 
-      <div class="grid grid-cols-2 gap-4 mt-4 mb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-4 mb-8">
         <div v-for="aboutListItem in aboutListItems" :key="aboutListItem.title"
           class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
         >
@@ -89,7 +89,7 @@
 
       <h3 class="text-lg text-full-white font-bold">What I'm Doing</h3>
 
-      <div class="grid grid-cols-1 gap-4 mt-4 mb-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 mb-8">
         <div v-for="doingListItem in doingListItems" :key="doingListItem.title"
           class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
         >
@@ -133,6 +133,21 @@
       </ul>
 
       <h3 class="text-lg text-full-white font-bold mb-4">My skills</h3>
+      <div class="w-full p-4 mb-8 flex flex-col items-start border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+        <div v-for="skillsListItem in skillsListItems" :key="skillsListItem.title"
+          class="w-full mb-4"
+        >
+          <div class="mb-1">
+            <span class="text-full-white font-bold mr-2">{{ skillsListItem.title }}</span>
+            <span class="text-mid-white">{{ `${skillsListItem.percentage}%` }}</span>
+          </div>
+
+          <div class="relative">
+            <div class="absolute h-2 w-full bg-extra-low-white rounded"></div>
+            <div :style="`width: ${skillsListItem.percentage}%;`" class="absolute h-2 bg-gradient-to-r from-primary to-primary-dark rounded z-10"></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section v-if="selectedNavBarItem === 3"
@@ -141,21 +156,23 @@
       <h2 class="text-2xl text-full-white font-bold">Portfolio</h2>
       <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
 
-      <div v-for="portfolioListItem in portfolioListItems" :key="portfolioListItem.name"
-        class="animate__animated animate__zoomIn animate__faster"
-      >
-        <a :href="portfolioListItem.link" target="_blank">
-          <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
-            class="rounded-xl"
-          >
-          <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
-          <p class="text-sm text-mid-white mb-8">{{ portfolioListItem.content }}</p>
-        </a>
+      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
+        <div v-for="portfolioListItem in portfolioListItems" :key="portfolioListItem.name"
+          class="animate__animated animate__zoomIn animate__faster"
+        >
+          <a :href="portfolioListItem.link" target="_blank">
+            <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
+              class="rounded-xl"
+            >
+            <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
+            <p class="text-sm text-mid-white mb-8">{{ portfolioListItem.content }}</p>
+          </a>
+        </div>
       </div>
     </section>
   </div>
 
-  <nav class="fixed bottom-0 left-0 right-0 p-4 bg-mid-black rounded-t-xl overflow-hidden">
+  <nav class="fixed bottom-0 left-0 right-0 p-4 bg-mid-black rounded-t-xl overflow-hidden backdrop-blur-lg bg-opacity-20">
     <ul class="flex justify-evenly">
       <li v-for="navBarItem in navBarItems" :key="navBarItem.title"
         class="text-full-white transition-colors"
@@ -182,11 +199,13 @@ export default {
   computed: {
     setChevronIcon() {
       return this.showHeaderListItem ? 'ChevronUp' : 'ChevronDown'
-    }
+    },
   },
 
   data() {
     return {
+      width: null,
+      height: null,
       showHeaderListItem: false,
       selectedNavBarItem: 1,
       headerListItems: [
@@ -230,12 +249,12 @@ export default {
       skillsListItems: [
         { title: 'HTML/CSS', percentage: 95 },
         { title: 'Javascript', percentage: 90 },
-        { title: 'Vue.js', percentage: 90 },
-        { title: 'Tailwind', percentage: 90 },
+        { title: 'Vue.js', percentage: 85 },
+        { title: 'Tailwind', percentage: 80 },
         { title: 'Vuetify', percentage: 90 },
         { title: 'GitHub', percentage: 90 },
-        { title: 'MySQL', percentage: 90 },
-        { title: 'Node.js', percentage: 90 },
+        { title: 'Node.js', percentage: 50 },
+        { title: 'MySQL', percentage: 40 },
       ],
 
       portfolioListItems: [
@@ -251,14 +270,28 @@ export default {
     }
   },
 
+  mounted() {
+    this.getWindowSize()
+    window.addEventListener('resize', this.getWindowSize);
+  },
+
+  unmounted() {
+    window.removeEventListener('resize', this.getWindowSize);
+  },
+
   methods: {
+    getWindowSize() {
+      this.width = document.documentElement.clientWidth;
+      this.height = document.documentElement.clientHeight;
+    },
+
     setShowHeaderListItem() {
-      this.showHeaderListItem = !this.showHeaderListItem
+      return this.showHeaderListItem = !this.showHeaderListItem
     },
 
     getImageUrl(name) {
       return new URL(`../assets/images/${name}.png`, import.meta.url).href
-    }
+    },
   }
 }
 </script>
