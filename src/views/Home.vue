@@ -34,7 +34,7 @@
             <li v-for="headerListItem in headerListItems" :key="headerListItem.title"
               class="flex mb-4"
             >
-              <div class="w-8 h-8 mr-2 flex justify-center items-center border border-extra-low-white shadow-full-black shadow rounded-lg">
+              <div class="w-8 h-8 mr-2 flex justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
                 <icon
                   :name="headerListItem.icon"
                   :class="'w-4 h-4 text-primary'"
@@ -74,15 +74,16 @@
       <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
       <p class="text-mid-white mb-6">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
 
-      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-4 mb-8">
+      <div class="grid grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mb-8">
         <div v-for="aboutListItem in aboutListItems" :key="aboutListItem.title"
-          class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
+          class="flex flex-col items-center w-full h-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
+          style="min-height: 150px;"
         >
           <icon
             :name="aboutListItem.icon"
             :class="'w-8 h-8 text-primary mb-2'"
           />
-          <h4 class="text-2xl text-full-white font-bold">{{ aboutListItem.title }}</h4>
+          <h4 class="text-2xl text-full-white font-bold">{{ setAboutListItemTitle(aboutListItem) }}</h4>
           <p class="text-sm text-mid-white text-center mt-1">{{ aboutListItem.content }}</p>
         </div>
       </div>
@@ -200,6 +201,10 @@ export default {
     setChevronIcon() {
       return this.showHeaderListItem ? 'ChevronUp' : 'ChevronDown'
     },
+
+    yearsOfExperience() {
+      return '+2'
+    }
   },
 
   data() {
@@ -223,9 +228,9 @@ export default {
       ],
 
       aboutListItems: [
-        { title: '+2', content: 'Years of experience', icon: 'Briefcase' },
+        { title: '+2', content: 'Years of experience', icon: 'Briefcase', since: '03/15/2021' },
         { title: '+10', content: 'Projects completed', icon: 'LightBulb' },
-        { title: '+10', content: 'Training & courses', icon: 'AcademicCap' },
+        // { title: '+10', content: 'Training & courses', icon: 'AcademicCap' },
       ],
 
       doingListItems: [
@@ -289,9 +294,41 @@ export default {
       return this.showHeaderListItem = !this.showHeaderListItem
     },
 
+    setAboutListItemTitle(item) {
+      if (item.content === 'Years of experience') {
+        return this.calcTime(item.since)
+      }
+
+      if (item.content === 'Projects completed') {
+        return this.portfolioListItems.length
+      }
+
+      return item.title
+    },
+
+    calcTime(since) {
+      let sinceTime = new Date(since).getTime()
+      let ageDifMs = Date.now() - sinceTime
+      let ageDate = new Date(ageDifMs)
+
+      let year = ageDate.getUTCFullYear() - 1970
+      let month = ageDate.getMonth()
+      let total = parseFloat((year * 12 + month) / 12)
+      
+      return `+${total}`
+    },
+
     getImageUrl(name) {
       return new URL(`../assets/images/${name}.png`, import.meta.url).href
     },
   }
 }
 </script>
+
+<style>
+
+.test {
+  color: #4e83f5
+}
+</style>
+
