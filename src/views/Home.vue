@@ -64,129 +64,127 @@
       </div>
     </header>
 
-    <section v-if="selectedNavBarItem === 1"
-      class="w-full p-4 mb-14 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
-    >
-      <h2 class="text-2xl text-full-white font-bold">About Me</h2>
-      <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
-      <p class="text-mid-white mb-2">Sou graduado em contabilidade desde 2018 e trabalho na área de tecnologia desde 2020.</p>
-      <p class="text-mid-white mb-2">Realizei um curso técnico de multimídia integrado ao ensino médio onde aprimorei o meu lado criativo e adquiri habilidades de UX e UI.</p>
-      <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
-      <p class="text-mid-white mb-6">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
+    <section class="relative w-full p-4 mb-14 lg:mb-4 xl:mb-0 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden">
+      <div v-if="selectedNavBarItem === 1" class="animate__animated animate__fadeIn">
+        <h2 class="text-2xl text-full-white font-bold">About Me</h2>
+        <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
+        <p class="text-mid-white mb-2">Sou graduado em contabilidade desde 2018 e trabalho na área de tecnologia desde 2020.</p>
+        <p class="text-mid-white mb-2">Realizei um curso técnico de multimídia integrado ao ensino médio onde aprimorei o meu lado criativo e adquiri habilidades de UX e UI.</p>
+        <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
+        <p class="text-mid-white mb-6">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
 
-      <div class="grid grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mb-8">
-        <div v-for="aboutListItem in aboutListItems" :key="aboutListItem.title"
-          class="flex flex-col items-center w-full h-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
-          style="min-height: 150px;"
-        >
-          <icon
-            :name="aboutListItem.icon"
-            :class="'w-8 h-8 text-primary mb-2'"
-          />
-          <h4 class="text-2xl text-full-white font-bold">{{ setAboutListItemTitle(aboutListItem) }}</h4>
-          <p class="text-sm text-mid-white text-center mt-1">{{ aboutListItem.content }}</p>
-        </div>
-      </div>
-
-      <h3 class="text-lg text-full-white font-bold">What I'm Doing</h3>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 mb-8">
-        <div v-for="doingListItem in doingListItems" :key="doingListItem.title"
-          class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
-        >
-          <icon
-            :name="doingListItem.icon"
-            :class="'w-8 h-8 text-primary mb-2'"
-          />
-          <h4 class="text-full-white font-bold">{{ doingListItem.title }}</h4>
-          <p class="text-sm text-mid-white text-center mt-1">{{ doingListItem.content }}</p>
-        </div>
-      </div>
-    </section>
-
-    <section v-if="selectedNavBarItem === 2"
-      class="w-full p-4 mb-14 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
-    >
-      <h2 class="text-2xl text-full-white font-bold">Resume</h2>
-
-      <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
-
-      <h3 class="text-lg text-full-white font-bold mb-4">Education</h3>
-      <ul class="text-full-white marker:text-primary list-outside list-disc ml-6 mb-4">
-        <li v-for="educationListItem in educationListItems" :key="educationListItem.title"
-          class="pb-4"
-        >
-          <h4 class="font-bold">{{ educationListItem.title }}</h4>
-          <p class="text-primary font-bold">{{ educationListItem.subtitle }}</p>
-          <p class="text-mid-white">{{ educationListItem.content }}</p>
-        </li>
-      </ul>
-
-      <h3 class="text-lg text-full-white font-bold mb-4">Experience</h3>
-      <ul class="text-full-white marker:text-primary list-outside list-disc ml-6 mb-4">
-        <li v-for="experienceListItem in experienceListItems" :key="experienceListItem.title"
-          class="pb-4"
-        >
-          <h4 class="font-bold">{{ experienceListItem.title }}</h4>
-          <p class="text-primary font-bold">{{ experienceListItem.subtitle }}</p>
-          <p class="text-mid-white">{{ experienceListItem.content }}</p>
-        </li>
-      </ul>
-
-      <h3 class="text-lg text-full-white font-bold mb-4">My skills</h3>
-      <div class="w-full p-4 mb-8 flex flex-col items-start border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
-        <div v-for="skillsListItem in skillsListItems" :key="skillsListItem.title"
-          class="w-full mb-4"
-        >
-          <div class="mb-1">
-            <span class="text-full-white font-bold mr-2">{{ skillsListItem.title }}</span>
-            <span class="text-mid-white">{{ `${skillsListItem.percentage}%` }}</span>
+        <div class="grid grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mb-8">
+          <div v-for="aboutListItem in aboutListItems" :key="aboutListItem.title"
+            class="flex flex-col items-center w-full h-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
+            style="min-height: 150px;"
+          >
+            <icon
+              :name="aboutListItem.icon"
+              :class="'w-8 h-8 text-primary mb-2'"
+            />
+            <h4 class="text-2xl text-full-white font-bold">{{ setAboutListItemTitle(aboutListItem) }}</h4>
+            <p class="text-sm text-mid-white text-center mt-1">{{ aboutListItem.content }}</p>
           </div>
+        </div>
 
-          <div class="relative">
-            <div class="absolute h-2 w-full bg-extra-low-white rounded"></div>
-            <div :style="`width: ${skillsListItem.percentage}%;`" class="absolute h-2 bg-gradient-to-r from-primary to-primary-dark rounded z-10"></div>
+        <h3 class="text-lg text-full-white font-bold">What I'm Doing</h3>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 mb-8">
+          <div v-for="doingListItem in doingListItems" :key="doingListItem.title"
+            class="flex flex-col items-center w-full p-4 border border-extra-low-white shadow-lg rounded-xl shadow-full-black"
+          >
+            <icon
+              :name="doingListItem.icon"
+              :class="'w-8 h-8 text-primary mb-2'"
+            />
+            <h4 class="text-full-white font-bold">{{ doingListItem.title }}</h4>
+            <p class="text-sm text-mid-white text-center mt-1">{{ doingListItem.content }}</p>
           </div>
         </div>
       </div>
-    </section>
 
-    <section v-if="selectedNavBarItem === 3"
-      class="w-full p-4 mb-14 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden animate__animated animate__fadeIn"
-    >
-      <h2 class="text-2xl text-full-white font-bold">Portfolio</h2>
-      <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
+      <div v-if="selectedNavBarItem === 2" class="animate__animated animate__fadeIn">
+        <h2 class="text-2xl text-full-white font-bold">Resume</h2>
+        <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
-        <div v-for="portfolioListItem in portfolioListItems" :key="portfolioListItem.name"
-          class="animate__animated animate__zoomIn animate__faster"
-        >
-          <a :href="portfolioListItem.link" target="_blank">
-            <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
-              class="rounded-xl"
+        <h3 class="text-lg text-full-white font-bold mb-4">Education</h3>
+        <ul class="text-full-white marker:text-primary list-outside list-disc ml-6 mb-4">
+          <li v-for="educationListItem in educationListItems" :key="educationListItem.title"
+            class="pb-4"
+          >
+            <h4 class="font-bold">{{ educationListItem.title }}</h4>
+            <p class="text-primary font-bold">{{ educationListItem.subtitle }}</p>
+            <p class="text-mid-white">{{ educationListItem.content }}</p>
+          </li>
+        </ul>
+
+        <h3 class="text-lg text-full-white font-bold mb-4">Experience</h3>
+        <ul class="text-full-white marker:text-primary list-outside list-disc ml-6 mb-4">
+          <li v-for="experienceListItem in experienceListItems" :key="experienceListItem.title"
+            class="pb-4"
+          >
+            <h4 class="font-bold">{{ experienceListItem.title }}</h4>
+            <p class="text-primary font-bold">{{ experienceListItem.subtitle }}</p>
+            <p class="text-mid-white">{{ experienceListItem.content }}</p>
+          </li>
+        </ul>
+
+        <h3 class="text-lg text-full-white font-bold mb-4">My skills</h3>
+        <div class="w-full p-4 mb-8 flex flex-col items-start border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+          <div v-for="skillsListItem in skillsListItems" :key="skillsListItem.title"
+            class="w-full mb-4"
+          >
+            <div class="mb-1">
+              <span class="text-full-white font-bold mr-2">{{ skillsListItem.title }}</span>
+              <span class="text-mid-white">{{ `${skillsListItem.percentage}%` }}</span>
+            </div>
+
+            <div class="relative">
+              <div class="absolute h-2 w-full bg-extra-low-white rounded"></div>
+              <div :style="`width: ${skillsListItem.percentage}%;`" class="absolute h-2 bg-gradient-to-r from-primary to-primary-dark rounded z-10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="selectedNavBarItem === 3" class="animate__animated animate__fadeIn">
+        <h2 class="text-2xl text-full-white font-bold">Portfolio</h2>
+        <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
+          <div v-for="portfolioListItem in portfolioListItems" :key="portfolioListItem.name"
+            class="animate__animated animate__zoomIn animate__faster"
+          >
+            <a :href="portfolioListItem.link" target="_blank">
+              <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
+                class="rounded-xl"
+              >
+              <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
+              <p class="text-sm text-mid-white mb-8">{{ portfolioListItem.content }}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="p-4 bg-mid-black rounded-t-xl overflow-hidden backdrop-blur-lg bg-opacity-20 z-10
+        fixed bottom-0 left-0 right-0 
+        xl:absolute xl:top-0 xl:right-0 xl:left-1/2 xl:bottom-auto xl:bg-low-black xl:rounded-none xl:rounded-bl-xl xl:border xl:border-extra-low-white"
+      >
+        <ul class="flex justify-evenly">
+          <li v-for="navBarItem in navBarItems" :key="navBarItem.title"
+            class="text-full-white transition-colors"
+            :class="{'font-bold text-primary': selectedNavBarItem === navBarItem.id}"
+          >
+            <button @click="selectedNavBarItem = navBarItem.id"
+              class="focus:outline-none"
             >
-            <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
-            <p class="text-sm text-mid-white mb-8">{{ portfolioListItem.content }}</p>
-          </a>
-        </div>
-      </div>
+              {{ navBarItem.title }}
+            </button>
+          </li>
+        </ul>
+      </nav>
     </section>
   </div>
-
-  <nav class="fixed bottom-0 left-0 right-0 p-4 bg-mid-black rounded-t-xl overflow-hidden backdrop-blur-lg bg-opacity-20">
-    <ul class="flex justify-evenly">
-      <li v-for="navBarItem in navBarItems" :key="navBarItem.title"
-        class="text-full-white transition-colors"
-        :class="{'font-bold text-primary': selectedNavBarItem === navBarItem.id}"
-      >
-        <button @click="selectedNavBarItem = navBarItem.id"
-          class="focus:outline-none"
-        >
-          {{ navBarItem.title }}
-        </button>
-      </li>
-    </ul>
-  </nav>
 </template>
 
 <script>
