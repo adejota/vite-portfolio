@@ -12,7 +12,7 @@
         <div>
           <h1 class="text-2xl text-full-white font-bold mb-2">Ademir Jr.</h1>
           <div class="text-sm text-full-white py-1 px-2 bg-low-black rounded-xl">
-            <span>Web Developer</span>
+            <span>Desenvolvedor web</span>
           </div>
         </div>
 
@@ -66,7 +66,7 @@
 
     <section class="relative w-full p-4 mb-14 lg:mb-4 xl:mb-0 bg-mid-black rounded-xl border border-extra-low-white overflow-hidden">
       <div v-if="selectedNavBarItem === 1" class="animate__animated animate__fadeIn">
-        <h2 class="text-2xl text-full-white font-bold">About Me</h2>
+        <h2 class="text-2xl text-full-white font-bold">Sobre mim</h2>
         <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
         <p class="text-mid-white mb-2">Sou graduado em contabilidade desde 2018 e trabalho na área de tecnologia desde 2020.</p>
         <p class="text-mid-white mb-2">Realizei um curso técnico de multimídia integrado ao ensino médio onde aprimorei o meu lado criativo e adquiri habilidades de UX e UI.</p>
@@ -87,7 +87,7 @@
           </div>
         </div>
 
-        <h3 class="text-lg text-full-white font-bold">What I'm Doing</h3>
+        <h3 class="text-lg text-full-white font-bold">O que estou fazendo</h3>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4 mb-8">
           <div v-for="doingListItem in doingListItems" :key="doingListItem.title"
@@ -104,10 +104,10 @@
       </div>
 
       <div v-if="selectedNavBarItem === 2" class="animate__animated animate__fadeIn">
-        <h2 class="text-2xl text-full-white font-bold">Resume</h2>
+        <h2 class="text-2xl text-full-white font-bold">Currículo</h2>
         <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
 
-        <h3 class="text-lg text-full-white font-bold mb-4">Education</h3>
+        <h3 class="text-lg text-full-white font-bold mb-4">Escolaridade</h3>
         <ul class="text-full-white marker:text-primary list-outside list-disc ml-6 mb-4">
           <li v-for="educationListItem in educationListItems" :key="educationListItem.title"
             class="pb-4"
@@ -118,7 +118,7 @@
           </li>
         </ul>
 
-        <h3 class="text-lg text-full-white font-bold mb-4">Experience</h3>
+        <h3 class="text-lg text-full-white font-bold mb-4">Experiência profissional</h3>
         <ul class="text-full-white marker:text-primary list-outside list-disc ml-6 mb-4">
           <li v-for="experienceListItem in experienceListItems" :key="experienceListItem.title"
             class="pb-4"
@@ -129,7 +129,7 @@
           </li>
         </ul>
 
-        <h3 class="text-lg text-full-white font-bold mb-4">My skills</h3>
+        <h3 class="text-lg text-full-white font-bold mb-4">Habilidades</h3>
         <div class="w-full p-4 mb-8 flex flex-col items-start border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
           <div v-for="skillsListItem in skillsListItems" :key="skillsListItem.title"
             class="w-full mb-4"
@@ -170,18 +170,28 @@
         fixed bottom-0 left-0 right-0 
         xl:absolute xl:top-0 xl:right-0 xl:left-1/2 xl:bottom-auto xl:bg-low-black xl:rounded-none xl:rounded-bl-xl xl:border xl:border-extra-low-white"
       >
-        <ul class="flex justify-evenly">
-          <li v-for="navBarItem in navBarItems" :key="navBarItem.title"
-            class="text-full-white transition-colors"
-            :class="{'font-bold text-primary': selectedNavBarItem === navBarItem.id}"
-          >
-            <button @click="selectedNavBarItem = navBarItem.id"
-              class="focus:outline-none"
+        <div class="flex justify-evenly">
+          <ul class="flex justify-evenly w-10/12">
+            <li v-for="navBarItem in navBarItems" :key="navBarItem.title"
+              class="text-full-white transition-colors"
+              :class="{'font-bold text-primary': selectedNavBarItem === navBarItem.id}"
             >
-              {{ navBarItem.title }}
-            </button>
-          </li>
-        </ul>
+              <button @click="selectedNavBarItem = navBarItem.id"
+                class="focus:outline-none"
+              >
+                {{ navBarItem.title }}
+              </button>
+            </li>
+
+          </ul>
+
+          <button>
+            <icon
+              name="Language"
+              :class="'w-6 h-6 text-full-white'"
+            />
+          </button>
+        </div>
       </nav>
     </section>
   </div>
@@ -213,9 +223,9 @@ export default {
       selectedNavBarItem: 1,
       headerListItems: [
         { title: 'email', content: 'ademir.diamentejunior@gmail.com', icon: 'Mail' },
-        { title: 'phone', content: '+5511983506490', icon: 'DevicePhoneMobile' },
-        { title: 'location', content: 'São Paulo, Brazil', icon: 'Location' },
-        { title: 'birth', content: '01/19/1994', icon: 'Cake' },
+        { title: 'celular', content: '+5511983506490', icon: 'DevicePhoneMobile' },
+        { title: 'localização', content: 'São Paulo, Brazil', icon: 'Location' },
+        { title: 'nascimento', content: '01/19/1994', icon: 'Cake' },
       ],
 
       headerNavListItems: [
@@ -226,27 +236,28 @@ export default {
       ],
 
       aboutListItems: [
-        { title: '+2', content: 'Years of experience', icon: 'Briefcase', since: '03/15/2021' },
-        { title: '+10', content: 'Projects completed', icon: 'LightBulb' },
+        { title: '+2', content: 'Anos de experiência com tecnologia', icon: 'Briefcase', since: '03/01/2020' },
+        { title: '+10', content: 'Projetos completados', icon: 'LightBulb' },
         // { title: '+10', content: 'Training & courses', icon: 'AcademicCap' },
       ],
 
       doingListItems: [
-        { title: 'Web Development', content: 'High-quality development of sites at the professional level', icon: 'CodeBracketSquare' },
-        { title: 'Web Design', content: 'The most modern and high-quality design made at a professional level', icon: 'PencilSquare' },
+        { title: 'Desenvolvimento Web', content: 'Desenvolvimento de sites de alta qualidade a nível profissional', icon: 'CodeBracketSquare' },
+        { title: 'Git flow', content: 'Controle do versionamento do código e deploy do sistema', icon: 'GitHub' },
+        { title: 'Gestão de pessoas ', content: 'Responsável pelo code-review, atribuição de tarefas e prazos', icon: 'UserGroup' },
       ],
 
       educationListItems: [
-        { title: 'Universidade de São Paulo', subtitle: '2013 — 2018', content: 'Bachelors, Accounting'},
-        { title: 'Université Paris Dauphine', subtitle: '2016 — 2016', content: 'Exchange program, Business'},
+        { title: 'Universidade de São Paulo', subtitle: '2013 — 2018', content: 'Bacharelado, Ciências contábeis'},
+        { title: 'Université Paris Dauphine', subtitle: '2016 — 2016', content: 'Intercâmbio, Negócios'},
       ],
 
       experienceListItems: [
-        { title: 'Frontend Developer', subtitle: 'Znap Technologies | mar 2021 — present', content: 'Atuo com foco no front-end em um sistema Vue.js modularizado em diferentes SPAs. Sou responsável por desenvolver componentes genéricos que seguem o princípio de low-coding e são utilizados em todas as views do sistema. Contribuo com code-review dos meus pares, além de ser o responsável por controlar o versionamento do código e o deploy do sistema' },
+        { title: 'Desenvolvedor web', subtitle: 'Znap Technologies | mar 2021 — atualmente', content: 'Atuo com foco no front-end em um sistema Vue.js modularizado em diferentes SPAs. Sou responsável por desenvolver componentes genéricos que seguem o princípio de low-coding e são utilizados em todas as views do sistema. Contribuo com code-review dos meus pares, além de ser o responsável por controlar o versionamento do código e o deploy do sistema' },
         { title: 'Product Owner', subtitle: 'Lavapp | mar 2020 — mar 2021', content: 'Atuei como PO em uma webview com front-end em Vue.js e API Laravel. Também fui responsável por elaborar relatórios gerenciais com objetivo de criar e analisar indicadores estratégicos para a área comercial e financeira' },
-        { title: 'Analista', subtitle: 'Petroplus | feb 2018 — feb 2020', content: 'Atuei auxiliando decisões de nível gerencial com foco na melhoria de processos e planejamento estratégico' },
+        { title: 'Analista', subtitle: 'Petroplus | fev 2018 — fev 2020', content: 'Atuei auxiliando decisões de nível gerencial com foco na melhoria de processos e planejamento estratégico' },
         { title: 'Estagiário comercial', subtitle: 'Petroplus | mar 2017 — jan 2018', content: '' },
-        { title: 'Estagiário de contabilidade', subtitle: 'Banco Safra | oct 2015 — jul 2016', content: '' },
+        { title: 'Estagiário de contabilidade', subtitle: 'Banco Safra | out 2015 — jul 2016', content: '' },
       ],
 
       skillsListItems: [
@@ -258,6 +269,7 @@ export default {
         { title: 'GitHub', percentage: 90 },
         { title: 'Node.js', percentage: 50 },
         { title: 'MySQL', percentage: 40 },
+        { title: 'Figma', percentage: 75 },
       ],
 
       portfolioListItems: [
@@ -266,8 +278,8 @@ export default {
       ],
 
       navBarItems: [
-        { id: 1, title: 'About' },
-        { id: 2, title: 'Resume' },
+        { id: 1, title: 'Sobre' },
+        { id: 2, title: 'Currículo' },
         { id: 3, title: 'Portfolio' }
       ],
     }
@@ -293,11 +305,11 @@ export default {
     },
 
     setAboutListItemTitle(item) {
-      if (item.content === 'Years of experience') {
+      if (item.content === 'Anos de experiência') {
         return this.calcTime(item.since)
       }
 
-      if (item.content === 'Projects completed') {
+      if (item.content === 'Projetos completados') {
         return this.portfolioListItems.length
       }
 

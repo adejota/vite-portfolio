@@ -18,7 +18,8 @@ import LightBulb from './LightBulb.vue'
 import AcademicCap from './AcademicCap.vue'
 import CodeBracketSquare from './CodeBracketSquare.vue'
 import PencilSquare from './PencilSquare.vue'
-
+import Language from './Language.vue'
+import UserGroup from './UserGroup.vue'
 
 export default {
   components: {
@@ -37,6 +38,8 @@ export default {
     AcademicCap,
     CodeBracketSquare,
     PencilSquare,
+    Language,
+    UserGroup,
   },
 
   props: {
