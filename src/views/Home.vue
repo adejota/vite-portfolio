@@ -129,20 +129,16 @@
           </li>
         </ul>
 
-        <h3 class="text-lg text-full-white font-bold mb-4">Habilidades</h3>
-        <div class="w-full p-4 mb-8 flex flex-col items-start border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+        <h3 class="text-lg text-full-white font-bold mb-4">Tecnologias</h3>
+        <div class="w-full p-4 mb-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4 lg:grid-cols-6 border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
           <div v-for="skillsListItem in skillsListItems" :key="skillsListItem.title"
-            class="w-full mb-4"
+            class="mr-2 p-2 pt-4 flex flex-col justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg"
           >
-            <div class="mb-1">
-              <span class="text-full-white font-bold mr-2">{{ skillsListItem.title }}</span>
-              <span class="text-mid-white">{{ `${skillsListItem.percentage}%` }}</span>
-            </div>
-
-            <div class="relative">
-              <div class="absolute h-2 w-full bg-extra-low-white rounded"></div>
-              <div :style="`width: ${skillsListItem.percentage}%;`" class="absolute h-2 bg-gradient-to-r from-primary to-primary-dark rounded z-10"></div>
-            </div>
+            <icon
+              :name="skillsListItem.icon"
+              :class="'w-12 h-12'"
+            />
+            <p class="m-0 mt-2 text-mid-white">{{ skillsListItem.title }}</p>
           </div>
         </div>
       </div>
@@ -209,10 +205,6 @@ export default {
     setChevronIcon() {
       return this.showHeaderListItem ? 'ChevronUp' : 'ChevronDown'
     },
-
-    yearsOfExperience() {
-      return '+2'
-    }
   },
 
   data() {
@@ -261,15 +253,21 @@ export default {
       ],
 
       skillsListItems: [
-        { title: 'HTML/CSS', percentage: 95 },
-        { title: 'Javascript', percentage: 90 },
-        { title: 'Vue.js', percentage: 85 },
-        { title: 'Tailwind', percentage: 80 },
-        { title: 'Vuetify', percentage: 90 },
-        { title: 'GitHub', percentage: 90 },
-        { title: 'Node.js', percentage: 50 },
-        { title: 'MySQL', percentage: 40 },
-        { title: 'Figma', percentage: 75 },
+        { title: 'Javascript', icon: 'JsLogo' },
+        { title: 'HTML', icon: 'HtmlLogo' },
+        { title: 'CSS', icon: 'CssLogo' },
+        { title: 'Vue', icon: 'VueLogo' },
+        { title: 'Tailwind', icon: 'TailwindLogo' },
+        { title: 'Vuetify', icon: 'VuetifyLogo' },
+        { title: 'Figma', icon: 'FigmaLogo' },
+        { title: 'GitHub', icon: 'GithubLogo' },
+        { title: 'Jest', icon: 'JestLogo' },
+        { title: 'Cypress', icon: 'CypressLogo' },
+        { title: 'Node', icon: 'NodeLogo' },
+        { title: 'MySQL', icon: 'MysqlLogo' },
+        { title: 'PostgreSQL', icon: 'PostgreLogo' },
+        { title: 'Office', icon: 'OfficeLogo' },
+        { title: 'Excel', icon: 'ExcelLogo' },
       ],
 
       portfolioListItems: [
@@ -305,7 +303,7 @@ export default {
     },
 
     setAboutListItemTitle(item) {
-      if (item.content === 'Anos de experiência') {
+      if (item.content === 'Anos de experiência com tecnologia') {
         return this.calcTime(item.since)
       }
 
@@ -323,9 +321,9 @@ export default {
 
       let year = ageDate.getUTCFullYear() - 1970
       let month = ageDate.getMonth()
-      let total = parseFloat((year * 12 + month) / 12)
+      let total = parseFloat((year * 12 + month) / 12).toFixed(1)
       
-      return `+${total}`
+      return `+ ${total}`
     },
 
     getImageUrl(name) {

@@ -20,6 +20,21 @@ import CodeBracketSquare from './CodeBracketSquare.vue'
 import PencilSquare from './PencilSquare.vue'
 import Language from './Language.vue'
 import UserGroup from './UserGroup.vue'
+import JsLogo from './JsLogo.vue'
+import NodeLogo from './NodeLogo.vue'
+import VueLogo from './VueLogo.vue'
+import HtmlLogo from './HtmlLogo.vue'
+import CssLogo from './CssLogo.vue'
+import TailwindLogo from './TailwindLogo.vue'
+import VuetifyLogo from './VuetifyLogo.vue'
+import FigmaLogo from './FigmaLogo.vue'
+import GithubLogo from './GithubLogo.vue'
+import JestLogo from './JestLogo.vue'
+import CypressLogo from './CypressLogo.vue'
+import MysqlLogo from './MysqlLogo.vue'
+import PostgreLogo from './PostgreLogo.vue'
+import OfficeLogo from './OfficeLogo.vue'
+import ExcelLogo from './ExcelLogo.vue'
 
 export default {
   components: {
@@ -40,6 +55,21 @@ export default {
     PencilSquare,
     Language,
     UserGroup,
+    JsLogo,
+    NodeLogo,
+    VueLogo,
+    HtmlLogo,
+    CssLogo,
+    TailwindLogo,
+    VuetifyLogo,
+    FigmaLogo,
+    GithubLogo,
+    JestLogo,
+    CypressLogo,
+    MysqlLogo,
+    PostgreLogo,
+    OfficeLogo,
+    ExcelLogo,
   },
 
   props: {
