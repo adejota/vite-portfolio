@@ -113,7 +113,7 @@
             class="pb-4"
           >
             <h4 class="font-bold">{{ educationListItem.title }}</h4>
-            <p class="text-primary font-bold">{{ educationListItem.subtitle }}</p>
+            <p class="text-primary font-bold text-sm">{{ educationListItem.subtitle }}</p>
             <p class="text-mid-white">{{ educationListItem.content }}</p>
           </li>
         </ul>
@@ -124,7 +124,7 @@
             class="pb-4"
           >
             <h4 class="font-bold">{{ experienceListItem.title }}</h4>
-            <p class="text-primary font-bold">{{ experienceListItem.subtitle }}</p>
+            <p class="text-primary font-bold text-sm">{{ experienceListItem.subtitle }}</p>
             <p class="text-mid-white">{{ experienceListItem.content }}</p>
           </li>
         </ul>
@@ -149,22 +149,33 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-4">
           <div v-for="portfolioListItem in portfolioListItems" :key="portfolioListItem.name"
-            class="animate__animated animate__zoomIn animate__faster"
+            class="animate__animated animate__zoomIn animate__faster w-full h-full flex flex-col justify-between"
           >
-            <a :href="portfolioListItem.link" target="_blank">
-              <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
-                class="rounded-xl"
-              >
+            <div>
+              <a :href="portfolioListItem.link" target="_blank">
+                <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
+                  class="rounded-xl"
+                >
+              </a>
               <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
-              <p class="text-sm text-mid-white mb-8">{{ portfolioListItem.content }}</p>
-            </a>
+              <p class="text-sm text-mid-white mb-2">{{ portfolioListItem.content }}</p>
+            </div>
+            <div class="flex justify-end">
+              <a :href="portfolioListItem.repo" target="_blank">
+                <icon
+                  :name="'GitHub'"
+                  :class="'w-6 h-6 text-mid-white hover:text-white transition-colors'"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
       <nav class="p-4 bg-mid-black rounded-t-xl overflow-hidden backdrop-blur-lg bg-opacity-20 z-10
         fixed bottom-0 left-0 right-0 
-        xl:absolute xl:top-0 xl:right-0 xl:left-1/2 xl:bottom-auto xl:bg-low-black xl:rounded-none xl:rounded-bl-xl xl:border xl:border-extra-low-white"
+        xl:absolute xl:top-0 xl:right-0 xl:left-1/2 xl:bottom-auto xl:bg-low-black xl:rounded-none xl:rounded-bl-xl xl:border xl:border-extra-low-white
+        overflow-visible"
       >
         <div class="flex justify-evenly">
           <ul class="flex justify-evenly w-10/12">
@@ -178,15 +189,32 @@
                 {{ navBarItem.title }}
               </button>
             </li>
-
           </ul>
 
-          <button>
-            <icon
-              name="Language"
-              :class="'w-6 h-6 text-full-white'"
-            />
-          </button>
+          <div class="relative">
+            <button @click="showLanguageDialog = !showLanguageDialog">
+              <icon
+                name="Language"
+                :class="'w-6 h-6 text-full-white'"
+              />
+            </button>
+
+            <div v-if="showLanguageDialog"
+              class="absolute -top-36 -right-5 xl:top-9 z-20"
+            >
+              <div class="py-7 px-5 xl:p-4 border border-extra-low-white bg-mid-black rounded shadow-xl">
+                <ul>
+                  <li v-for="(language, index) in languages"
+                    class="cursor-pointer"
+                    :class="{'mt-4': index !== 0}"
+                    @click="setLanguage(language)"
+                  >
+                    <span :class="language.code === selectedLanguage ? 'text-primary' : 'text-white'">{{ language.name }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </nav>
     </section>
@@ -209,6 +237,12 @@ export default {
 
   data() {
     return {
+      showLanguageDialog: false,
+      selectedLanguage: 'pt-BR',
+      languages: [
+        { name: 'Português', code: 'pt-BR' },
+        { name: 'English', code: 'en-US' },
+      ],
       width: null,
       height: null,
       showHeaderListItem: false,
@@ -271,8 +305,9 @@ export default {
       ],
 
       portfolioListItems: [
-        { name: 'le-tip', title: 'Le/Tip', content: 'Web app description', link: 'https://adejota-le-tip.netlify.app/' },
-        { name: 'memory-game', title: 'Memory game', content: 'Web app description', link: 'https://adejota-memory-game.netlify.app/' }
+        { name: 'le-tip', title: 'Le/Tip', content: 'App para divisão e conversão de gorjeta em dólar ou euro para reais.', link: 'https://adejota-le-tip.netlify.app/', repo: 'https://github.com/adejota/le-tip' },
+        { name: 'memory-game', title: 'Memory game', content: 'Um jogo de memória para mostrar para a minha sobrinha que o meu trabalho é legal!', link: 'https://adejota-memory-game.netlify.app/', repo: 'https://github.com/adejota/memory-game' },
+        { name: 'portfolio-1', title: 'Portfólio', content: 'Portfólio para iniciar minha carreira como desenvolvedor.', link: 'https://adejota-portfolio.herokuapp.com/', repo: 'https://github.com/adejota/portfolio-heroku-app' }
       ],
 
       navBarItems: [
@@ -314,6 +349,11 @@ export default {
       return item.title
     },
 
+    setLanguage(language) {
+      this.selectedLanguage = language.code
+      this.showLanguageDialog = false
+    },
+
     calcTime(since) {
       let sinceTime = new Date(since).getTime()
       let ageDifMs = Date.now() - sinceTime
@@ -322,8 +362,10 @@ export default {
       let year = ageDate.getUTCFullYear() - 1970
       let month = ageDate.getMonth()
       let total = parseFloat((year * 12 + month) / 12).toFixed(1)
+
+      let text = this.selectedLanguage === 'pt-BR' ? total.toString().replace('.', ',') : total.toString()
       
-      return `+ ${total}`
+      return `+ ${text}`
     },
 
     getImageUrl(name) {
