@@ -1,4 +1,12 @@
-const data = {
+const getData = (language) => {
+  if (language === "pt-BR") {
+    return pt;
+  } else if (language === "en-US") {
+    return en;
+  }
+};
+
+const pt = {
   languages: [
     { name: "Português", code: "pt-BR" },
     { name: "English", code: "en-US" },
@@ -120,6 +128,13 @@ const data = {
   ],
   portfolioListItems: [
     {
+      name: "crud-table",
+      title: "Crud table",
+      content: "Tabela responsiva que realiza operações CRUD.",
+      link: "https://adejota-crud-table.netlify.app/",
+      repo: "https://github.com/adejota/crud-table",
+    },
+    {
       name: "le-tip",
       title: "Le/Tip",
       content:
@@ -150,4 +165,11 @@ const data = {
   ],
 };
 
-export default data;
+const en = {
+  languages: [
+    { name: "Português", code: "pt-BR" },
+    { name: "English", code: "en-US" },
+  ],
+};
+
+export default getData;

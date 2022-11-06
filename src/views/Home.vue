@@ -223,8 +223,7 @@
 
 <script>
 import Icon from '../components/Icon/index.vue'
-import ptData from '../data/pt.js'
-import enData from '../data/en.js'
+import getData from '../data'
 
 export default {
   name: 'Home',
@@ -249,7 +248,7 @@ export default {
       skillsListItems,
       portfolioListItems,
       navBarItems
-    } = ptData
+    } = getData(this.selectedLanguage)
 
     this.languages = languages
     this.headerListItems = headerListItems
