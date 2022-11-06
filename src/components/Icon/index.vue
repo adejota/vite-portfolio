@@ -35,6 +35,8 @@ import MysqlLogo from './MysqlLogo.vue'
 import PostgreLogo from './PostgreLogo.vue'
 import OfficeLogo from './OfficeLogo.vue'
 import ExcelLogo from './ExcelLogo.vue'
+import ExpressLogo from './ExpressLogo.vue'
+import PythonLogo from './PythonLogo.vue'
 
 export default {
   components: {
@@ -70,6 +72,8 @@ export default {
     PostgreLogo,
     OfficeLogo,
     ExcelLogo,
+    ExpressLogo,
+    PythonLogo
   },
 
   props: {

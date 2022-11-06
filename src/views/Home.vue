@@ -68,10 +68,8 @@
       <div v-if="selectedNavBarItem === 1" class="animate__animated animate__fadeIn">
         <h2 class="text-2xl text-full-white font-bold">Sobre mim</h2>
         <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
-        <p class="text-mid-white mb-2">Sou graduado em contabilidade desde 2018 e trabalho na área de tecnologia desde 2020.</p>
-        <p class="text-mid-white mb-2">Realizei um curso técnico de multimídia integrado ao ensino médio onde aprimorei o meu lado criativo e adquiri habilidades de UX e UI.</p>
-        <p class="text-mid-white mb-2">Durante a faculdade e meus primeiros empregos trabalhei bastante o meu lado de negócios, conhecimento que considero crucial para entender mais a fundo a solução que as empresas oferecem.</p>
-        <p class="text-mid-white mb-6">Atualmente estou atuando como desenvolvedor frontend na Znap Technologies, estudando testes unitários, e2e e aprimorando meus conhecimentos no framework Vue.</p>
+        <p class="text-mid-white mb-2">Me formei em contabilidade pela USP em 2018 e estou na área de tecnologia desde 2020.</p>
+        <p class="text-mid-white mb-6">Atualmente estou atuando como desenvolvedor web na Znap Technologies, estudando testes automatizados e aprimorando meus conhecimentos no framework Vue.</p>
 
         <div class="grid grid-cols-2 lg:grid-cols-2 gap-4 mt-4 mb-8">
           <div v-for="aboutListItem in aboutListItems" :key="aboutListItem.title"
@@ -130,8 +128,61 @@
         </ul>
 
         <h3 class="text-lg text-full-white font-bold mb-4">Tecnologias</h3>
+        <h2 class="text-full-white font-bold mb-4">Linguagens</h2>
         <div class="w-full p-4 mb-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4 lg:grid-cols-6 border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
-          <div v-for="skillsListItem in skillsListItems" :key="skillsListItem.title"
+          <div v-for="skillsListItem in languageSkillsListItems" :key="skillsListItem.title"
+            class="mr-2 p-2 pt-4 flex flex-col justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg"
+          >
+            <icon
+              :name="skillsListItem.icon"
+              :class="'w-12 h-12'"
+            />
+            <p class="m-0 mt-2 text-mid-white">{{ skillsListItem.title }}</p>
+          </div>
+        </div>
+
+        <h2 class="text-full-white font-bold mb-4">Backend e banco de dados</h2>
+        <div class="w-full p-4 mb-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4 lg:grid-cols-6 border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+          <div v-for="skillsListItem in backendSkillsListItems" :key="skillsListItem.title"
+            class="mr-2 p-2 pt-4 flex flex-col justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg"
+          >
+            <icon
+              :name="skillsListItem.icon"
+              :class="'w-12 h-12'"
+            />
+            <p class="m-0 mt-2 text-mid-white">{{ skillsListItem.title }}</p>
+          </div>
+        </div>
+
+        <h2 class="text-full-white font-bold mb-4">Frontend e design</h2>
+        <div class="w-full p-4 mb-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4 lg:grid-cols-6 border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+          <div v-for="skillsListItem in frontendSkillsListItems" :key="skillsListItem.title"
+            class="mr-2 p-2 pt-4 flex flex-col justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg"
+          >
+            <icon
+              :name="skillsListItem.icon"
+              :class="'w-12 h-12'"
+            />
+            <p class="m-0 mt-2 text-mid-white">{{ skillsListItem.title }}</p>
+          </div>
+        </div>
+
+        <h2 class="text-full-white font-bold mb-4">Testes automatizados</h2>
+        <div class="w-full p-4 mb-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4 lg:grid-cols-6 border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+          <div v-for="skillsListItem in testsSkillsListItems" :key="skillsListItem.title"
+            class="mr-2 p-2 pt-4 flex flex-col justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg"
+          >
+            <icon
+              :name="skillsListItem.icon"
+              :class="'w-12 h-12'"
+            />
+            <p class="m-0 mt-2 text-mid-white">{{ skillsListItem.title }}</p>
+          </div>
+        </div>
+
+        <h2 class="text-full-white font-bold mb-4">Versionamento</h2>
+        <div class="w-full p-4 mb-8 grid grid-cols-2 gap-2 md:gap-4 md:grid-cols-4 lg:grid-cols-6 border border-extra-low-white shadow-lg shadow-full-black rounded-lg">
+          <div v-for="skillsListItem in versioningSkillsListItems" :key="skillsListItem.title"
             class="mr-2 p-2 pt-4 flex flex-col justify-center items-center border border-extra-low-white shadow-lg shadow-full-black rounded-lg"
           >
             <icon
@@ -234,6 +285,26 @@ export default {
     setChevronIcon() {
       return this.showHeaderListItem ? 'ChevronUp' : 'ChevronDown'
     },
+
+    languageSkillsListItems() {
+      return this.skillsListItems.length ? this.skillsListItems.filter(i => i.category === 'language') : []
+    },
+
+    backendSkillsListItems() {
+      return this.skillsListItems.length ? this.skillsListItems.filter(i => i.category === 'backend') : []
+    },
+
+    frontendSkillsListItems() {
+      return this.skillsListItems.length ? this.skillsListItems.filter(i => i.category === 'frontend') : []
+    },
+
+    testsSkillsListItems() {
+      return this.skillsListItems.length ? this.skillsListItems.filter(i => i.category === 'tests') : []
+    },
+
+    versioningSkillsListItems() {
+      return this.skillsListItems.length ? this.skillsListItems.filter(i => i.category === 'versioning') : []
+    },
   },
 
   created() {
@@ -307,7 +378,7 @@ export default {
         return this.calcTime(item.since)
       }
 
-      if (item.content === 'Projetos completados') {
+      if (item.content === 'Projetos') {
         return this.portfolioListItems.length
       }
 
