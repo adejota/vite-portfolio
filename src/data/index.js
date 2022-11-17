@@ -128,11 +128,12 @@ const pt = {
   ],
   portfolioListItems: [
     {
-      name: "crud-table",
-      title: "Crud table",
-      content: "Tabela responsiva que realiza operações CRUD.",
-      link: "https://adejota-crud-table.netlify.app/",
-      repo: "https://github.com/adejota/crud-table",
+      name: "eye-lenses",
+      title: "Eye lenses",
+      content:
+        "App para controle de lentes de contato.",
+      link: "https://adejota-eye-lenses.netlify.app/",
+      repo: "https://github.com/adejota/eye-lenses",
     },
     {
       name: "le-tip",
@@ -149,6 +150,13 @@ const pt = {
         "Jogo de memória para mostrar para a minha sobrinha que o meu trabalho é legal!",
       link: "https://adejota-memory-game.netlify.app/",
       repo: "https://github.com/adejota/memory-game",
+    },
+    {
+      name: "crud-table",
+      title: "Crud table",
+      content: "Tabela responsiva que realiza operações CRUD.",
+      link: "https://adejota-crud-table.netlify.app/",
+      repo: "https://github.com/adejota/crud-table",
     },
     {
       name: "portfolio-1",

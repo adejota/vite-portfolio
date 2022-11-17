@@ -205,7 +205,7 @@
             <div>
               <a :href="portfolioListItem.link" target="_blank">
                 <img :src="getImageUrl(portfolioListItem.name)" :alt="`${portfolioListItem.name} project cover`"
-                  class="rounded-xl"
+                  class="rounded-xl w-full object-cover"
                 >
               </a>
               <h3 class="mt-2 text-full-white font-bold">{{ portfolioListItem.title }}</h3>
