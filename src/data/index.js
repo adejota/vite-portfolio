@@ -52,8 +52,7 @@ const pt = {
   doingListItems: [
     {
       title: "Desenvolvimento Web",
-      content:
-        "Desenvolvimento de sites responsivos a nível profissional",
+      content: "Desenvolvimento de sites responsivos a nível profissional",
       icon: "CodeBracketSquare",
     },
     {
@@ -110,29 +109,28 @@ const pt = {
     },
   ],
   skillsListItems: [
-    { title: "Javascript", icon: "JsLogo", category: 'language' },
-    { title: "Python", icon: "PythonLogo", category: 'language' },
-    { title: "HTML", icon: "HtmlLogo", category: 'frontend' },
-    { title: "CSS", icon: "CssLogo", category: 'frontend'  },
-    { title: "Vue", icon: "VueLogo", category: 'frontend'  },
-    { title: "Tailwind", icon: "TailwindLogo", category: 'frontend'  },
-    { title: "Vuetify", icon: "VuetifyLogo", category: 'frontend'  },
-    { title: "Figma", icon: "FigmaLogo", category: 'frontend'  },
-    { title: "GitHub", icon: "GithubLogo", category: 'versioning'  },
-    { title: "Jest", icon: "JestLogo", category: 'tests'  },
-    { title: "Cypress", icon: "CypressLogo", category: 'tests'  },
-    { title: "Node", icon: "NodeLogo", category: 'backend'  },
-    { title: "Express", icon: "ExpressLogo", category: 'backend'  },
-    { title: "MySQL", icon: "MysqlLogo", category: 'backend'  },
-    { title: "PostgreSQL", icon: "PostgreLogo", category: 'backend'  },
+    { title: "Javascript", icon: "JsLogo", category: "language" },
+    { title: "Python", icon: "PythonLogo", category: "language" },
+    { title: "HTML", icon: "HtmlLogo", category: "frontend" },
+    { title: "CSS", icon: "CssLogo", category: "frontend" },
+    { title: "Vue", icon: "VueLogo", category: "frontend" },
+    { title: "Tailwind", icon: "TailwindLogo", category: "frontend" },
+    { title: "Vuetify", icon: "VuetifyLogo", category: "frontend" },
+    { title: "Figma", icon: "FigmaLogo", category: "frontend" },
+    { title: "GitHub", icon: "GithubLogo", category: "versioning" },
+    { title: "Jest", icon: "JestLogo", category: "tests" },
+    { title: "Cypress", icon: "CypressLogo", category: "tests" },
+    { title: "Node", icon: "NodeLogo", category: "backend" },
+    { title: "Express", icon: "ExpressLogo", category: "backend" },
+    { title: "MySQL", icon: "MysqlLogo", category: "backend" },
+    { title: "PostgreSQL", icon: "PostgreLogo", category: "backend" },
   ],
   portfolioListItems: [
     {
       name: "eye-lenses",
       title: "Eye lenses",
-      content:
-        "App para controle de lentes de contato.",
-      link: "https://adejota-eye-lenses.netlify.app/",
+      content: "App para controle de lentes de contato.",
+      link: "https://github.com/adejota/eye-lenses",
       repo: "https://github.com/adejota/eye-lenses",
     },
     {
