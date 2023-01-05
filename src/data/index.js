@@ -127,9 +127,17 @@ const pt = {
   ],
   portfolioListItems: [
     {
+      name: "automobile-catalog",
+      title: "Catálogo automotivo",
+      content:
+        "API REST em Python com Django restframework e versão Web em React.",
+      link: "https://github.com/adejota/automobile-catalog",
+      repo: "https://github.com/adejota/automobile-catalog",
+    },
+    {
       name: "eye-lenses",
-      title: "Eye lenses",
-      content: "App para controle de lentes de contato.",
+      title: "Lentes de contato",
+      content: "API REST em Node e versão Web em Vue.",
       link: "https://github.com/adejota/eye-lenses",
       repo: "https://github.com/adejota/eye-lenses",
     },
