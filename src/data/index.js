@@ -182,7 +182,7 @@ const pt = {
   navBarItems: [
     { id: 1, title: "Sobre" },
     { id: 2, title: "Currículo" },
-    { id: 3, title: "Portfolio" },
+    { id: 3, title: "Portfólio" },
   ],
 };
 

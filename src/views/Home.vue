@@ -195,7 +195,7 @@
       </div>
 
       <div v-if="selectedNavBarItem === 3" class="animate__animated animate__fadeIn">
-        <h2 class="text-2xl text-full-white font-bold">Portfolio</h2>
+        <h2 class="text-2xl text-full-white font-bold">Portfólio</h2>
         <div class="mt-2 mb-6 w-12 border-2 rounded-xl border-primary bg-primary"></div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
