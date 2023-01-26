@@ -127,10 +127,17 @@ const pt = {
   ],
   portfolioListItems: [
     {
+      name: "habits",
+      title: "Monitorador de hábitos",
+      content: "Typescript | API REST em Node e versão Web em React.",
+      link: "https://github.com/adejota/habits",
+      repo: "https://github.com/adejota/habits",
+    },
+    {
       name: "automobile-catalog",
       title: "Catálogo automotivo",
       content:
-        "Javascript & Python | API REST com Django restframework e versão Web em React.",
+        "Javascript e Python | API REST com Django restframework e versão Web em React.",
       link: "https://github.com/adejota/automobile-catalog",
       repo: "https://github.com/adejota/automobile-catalog",
     },
@@ -152,7 +159,7 @@ const pt = {
       name: "le-tip",
       title: "Le/Tip",
       content:
-        "Vue | App para divisão e conversão de gorjeta em dólar ou euro para reais.",
+        "Javascript | App feito em Vue para divisão e conversão de gorjeta em dólar ou euro para reais.",
       link: "https://adejota-le-tip.netlify.app/",
       repo: "https://github.com/adejota/le-tip",
     },
@@ -160,21 +167,23 @@ const pt = {
       name: "memory-game",
       title: "Memory game",
       content:
-        "Vue | Jogo de memória para mostrar para a minha sobrinha que o meu trabalho é legal!",
+        "Javascript | Jogo de memória feito em Vue para mostrar para a minha sobrinha que o meu trabalho é legal!",
       link: "https://adejota-memory-game.netlify.app/",
       repo: "https://github.com/adejota/memory-game",
     },
     {
       name: "crud-table",
       title: "Crud table",
-      content: "Vue | Tabela responsiva que realiza operações CRUD.",
+      content:
+        "Javascript | Tabela responsiva feita em Vue que realiza operações CRUD.",
       link: "https://adejota-crud-table.netlify.app/",
       repo: "https://github.com/adejota/crud-table",
     },
     {
       name: "portfolio-1",
       title: "Portfólio",
-      content: "HTML | Modelo de portfólio para desenvolvedor web.",
+      content:
+        "HTML, CS e Javascript | Modelo de portfólio para desenvolvedor web.",
       link: "https://adejota-portfolio.herokuapp.com/",
       repo: "https://github.com/adejota/portfolio-heroku-app",
     },
