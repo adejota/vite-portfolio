@@ -68,6 +68,11 @@ const pt = {
   ],
   educationListItems: [
     {
+      title: "PUC Minas",
+      subtitle: "2023 — 2024",
+      content: "Pós graduação, Desenvolvimento web fullstack",
+    },
+    {
       title: "Universidade de São Paulo",
       subtitle: "2013 — 2018",
       content: "Bacharelado, Ciências contábeis",
