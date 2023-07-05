@@ -39,6 +39,10 @@ const pt = {
     },
     { title: "github", link: "https://github.com/adejota", icon: "GitHub" },
   ],
+  aboutMe: [
+    "Olá! Sou um desenvolvedor web especializado em frontend. Trabalho atualmente com Vue.js, focado em criar interfaces funcionais, aprimorar a experiência do usuário e otimizar o desempenho das aplicações.",
+    "Tenho grande entusiasmo pela tecnologia e sempre me mantenho atualizado sobre as últimas tendências. Busco escrever código limpo, aderindo às melhores práticas recomendadas. Além disso, tenho facilidade para compreender os aspectos decisórios e lógicos do negócio.",
+  ],
   aboutListItems: [
     {
       title: "+2",
@@ -131,6 +135,14 @@ const pt = {
     { title: "PostgreSQL", icon: "PostgreLogo", category: "backend" },
   ],
   portfolioListItems: [
+    {
+      name: "dropmail",
+      title: "DropMail",
+      content:
+        "Javascript | App feito em Vue para gerar um endereço de e-mail temporário para que os usuários possam usar serviços online sem expor seu e-mail real.",
+      link: "https://github.com/adejota/dropmail",
+      repo: "https://github.com/adejota/dropmail",
+    },
     {
       name: "habits",
       title: "Monitorador de hábitos",
